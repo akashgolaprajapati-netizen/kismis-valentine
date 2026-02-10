@@ -1,1 +1,185 @@
-INDEX FILE READY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teddy Day | Chikku's Special Cuddle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --teddy-brown: #795548; --rose-red: #e91e63; --silk-pink: #f06292; --bg: #1a0508; --gold: #ffd700; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); font-family: 'Poppins', sans-serif; overflow-x: hidden; color: #fff; }
+
+        /* Floating Flirty Elements */
+        .particle { position: fixed; top: -10%; pointer-events: none; z-index: 999; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        section { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+        .active { display: flex; animation: zoomIn 0.8s ease; }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
+        /* Progress Bar */
+        .progress-container { position: fixed; top: 0; width: 100%; height: 6px; background: #2d0b10; z-index: 1000; }
+        .progress-bar { height: 100%; background: var(--rose-red); width: 0%; transition: 0.5s; box-shadow: 0 0 15px var(--rose-red); }
+
+        /* Teddy Cards */
+        .card-container { perspective: 1000px; width: 320px; height: 420px; margin: 20px auto; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+        .card-inner.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px; border: 2px solid var(--rose-red); }
+        .card-front { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
+        .card-back { background: var(--rose-red); color: white; transform: rotateY(180deg); }
+
+        /* Buttons */
+        .btn-main { background: var(--rose-red); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 20px; box-shadow: 0 0 20px rgba(233, 30, 99, 0.4); }
+        #noBtn { background: #444; color: #ccc; position: absolute; border-radius: 50px; padding: 10px 25px; border: none; transition: 0.1s; z-index: 99; }
+
+        h1 { font-family: 'Pacifico', cursive; color: var(--gold); font-size: 2.2rem; }
+        .teddy-img { width: 180px; height: auto; margin-bottom: 15px; border-radius: 20px; }
+        .flirt-text { font-style: italic; color: var(--gold); font-weight: 600; margin-top: 10px; }
+        .hot-glow { text-shadow: 0 0 10px var(--rose-red); color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="progress-container"><div class="progress-bar" id="pBar"></div></div>
+<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+<section id="s1" class="active">
+    <img src="https://media.tenor.com/N28R_ZpS66QAAAAi/milk-and-mocha-bear.gif" style="width:150px;">
+    <h1>Happy Teddy Day, Kismis! 🧸</h1>
+    <p>A teddy is soft, but my arms are warmer. Ready to see which one you prefer? 😉</p>
+    <button class="btn-main" onclick="startApp()">Unlock My Hugs 💋</button>
+</section>
+
+<section id="s2">
+    <h1>The "Safe" Cuddle ☁️</h1>
+    <img src="https://m.media-amazon.com/images/I/61m6-N+rY4L._SL1100_.jpg" class="teddy-img">
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <p>You know why I'm like this teddy?</p>
+                <p style="font-size: 0.8rem; margin-top: 20px; color: var(--gold);">(Tap to find out)</p>
+            </div>
+            <div class="card-back">
+                <p>“Kismis, you feel like home to me. Safe, comforting, and full of love.”</p>
+                <p class="flirt-text">But unlike this teddy, I can kiss you back. 😘</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('s2','s3')">Meet the next Bear 🧸</button>
+</section>
+
+<section id="s3">
+    <h1>The "Obsessed" Bear 😈</h1>
+    <img src="https://m.media-amazon.com/images/I/719hGk-tU3L._SL1500_.jpg" class="teddy-img">
+    <div class="card-container">
+        <div class="card-inner" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <p>If you were a teddy...</p>
+            </div>
+            <div class="card-back">
+                <p>“I may not say it perfectly every time, Kismis, but my heart knows only one name.”</p>
+                <p style="margin-top:15px;">I’d never let you go. I’d keep you in my bed, cuddle you all night, and never let anyone else touch my Kismis. ❤️‍🔥</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn-main" onclick="nav('s3','s4')">Something special... ✨</button>
+</section>
+
+<section id="s4">
+    <h1>The "Forever" Cuddle ♾️</h1>
+    <img src="https://m.media-amazon.com/images/I/61K0C-MstOL._SL1500_.jpg" class="teddy-img" style="width: 200px;">
+    <p class="flirt-text">“Kismis, I choose you—today, tomorrow, and always.”</p>
+    <p style="margin: 15px 0;">This bear is 5 feet tall, but my love for you is taller than the sky. Will you be my person forever?</p>
+    <button class="btn-main" onclick="nav('s4','s5')">Cuddle Scanner 🌡️</button>
+</section>
+
+<section id="s5">
+    <h1>Scanning Kismis's Cuddle Needs...</h1>
+    <div style="width: 280px; height: 25px; border: 2px solid var(--rose-red); border-radius: 15px; margin-top: 20px; background: #000;">
+        <div id="cuddleBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--gold), var(--rose-red)); transition: 3s;"></div>
+    </div>
+    <h2 id="cuddleResult" style="margin-top: 20px; color: var(--gold);">Analyzing...</h2>
+    <p id="cuddleMeme" style="display:none;" class="hot-glow">DANGER: KISMIS IS TOO CUTE TO RESIST! 🚨</p>
+    <button class="btn-main" id="scanBtn" onclick="testCuddles()">Start Scan</button>
+    <button class="btn-main" id="nextBtn" style="display:none;" onclick="nav('s5','s6')">Forgive your Duffer Bear? 🥺</button>
+</section>
+
+<section id="s6">
+    <img src="https://media.tenor.com/YmKzG75uN_oAAAAi/bunny-cute.gif" style="width:120px;">
+    <h1>Bad Bear Chikku 🙇‍♂️</h1>
+    <p>I know I act like a grumpy, annoying grizzly bear sometimes. But I’m <i>your</i> bear. Forgive me, Kismis?</p>
+    <div style="height: 100px; position: relative; width: 100%; margin-top: 20px;">
+        <button class="btn-main" onclick="nav('s6','s7')">Yes, Come here ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No 😤</button>
+    </div>
+</section>
+
+<section id="s7">
+    <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 50px; border: 3px solid var(--rose-red); box-shadow: 0 0 30px rgba(233, 30, 99, 0.3);">
+        <h1>My Only Forever Teddy ❤️</h1>
+        <p>“Kismis, you’re not just someone I love… you’re someone my heart chose without any doubt.”</p>
+        <p class="flirt-text" style="font-size: 1.2rem; color: #fff;">“Will you walk this life with me?”</p>
+        <p style="font-family: 'Pacifico'; font-size: 2.5rem; color: var(--rose-red); margin-top: 20px; text-shadow: 0 0 10px #000;">I Love You! 🧸💋</p>
+    </div>
+    <p style="margin-top: 20px; font-size: 0.9rem;">(P.S. I'm waiting for that hug 😉)</p>
+</section>
+
+<script>
+    let step = 1;
+    const total = 7;
+    const music = document.getElementById('bgMusic');
+
+    function startApp() {
+        music.play();
+        nav('s1', 's2');
+        startRain();
+    }
+
+    function nav(oldId, newId) {
+        document.getElementById(oldId).classList.remove('active');
+        document.getElementById(newId).classList.add('active');
+        step++;
+        document.getElementById('pBar').style.width = (step / total * 100) + '%';
+    }
+
+    function testCuddles() {
+        document.getElementById('cuddleBar').style.width = '100%';
+        document.getElementById('scanBtn').style.display = 'none';
+        let count = 0;
+        let timer = setInterval(() => {
+            count += 9;
+            document.getElementById('cuddleResult').innerText = count + '% Cuddle Requirement';
+            if(count > 99) {
+                clearInterval(timer);
+                document.getElementById('cuddleResult').innerText = 'ERROR: SNUGGLE OVERLOAD!';
+                document.getElementById('cuddleMeme').style.display = 'block';
+                document.getElementById('nextBtn').style.display = 'inline-block';
+            }
+        }, 200);
+    }
+
+    function moveNo() {
+        const btn = document.getElementById('noBtn');
+        btn.style.left = Math.random() * 80 + 'vw';
+        btn.style.top = Math.random() * 80 + 'vh';
+    }
+
+    function startRain() {
+        setInterval(() => {
+            const p = document.createElement("div");
+            p.className = "particle";
+            // Teddy/Flirty Mix: 🧸, 💋, 🔥, ❤️, 💙, 💛, ☁️
+            const items = ["🧸", "💋", "🔥", "❤️", "💙", "💛", "☁️", "🌹"];
+            p.innerHTML = items[Math.floor(Math.random() * items.length)];
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.fontSize = Math.random() * 20 + 20 + "px";
+            p.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 5000);
+        }, 300);
+    }
+</script>
+</body>
+</html>
